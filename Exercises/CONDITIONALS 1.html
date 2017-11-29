@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			// Using conditional statements, create a function that checks if your person object
+			// is between 20-40 years old, then outputs if that fact is true or not.
+			var person = {name: "Mohammed", age: 37, occupation: "Developer"};
+			
+			function isPerson20to40(){
+				if (person.age >= 20 &&  person.age <= 40){
+					document.write(person.age + " is within the range 20-40<br>");
+				}
+				else{
+					document.write(person.age + " is not within the range 20-40<br>");
+				}
+			}
+			
+			isPerson20to40();
+			
+			// Extra checks at different age values.
+			person.age = 19;
+			isPerson20to40();
+			
+			person.age = 41;
+			isPerson20to40();
+		</script>
+	</head>
+
+	<body>
+	</body>
+</html>
