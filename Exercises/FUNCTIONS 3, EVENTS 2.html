@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			// This "person" object will be used throughout this application.
+			var person = {};
+			
+			// This function will take the users input to create a new person object.
+			function createPerson(){
+				// Initialize the person object with empty values.
+				person = {name: "", age: 0, occupation: ""};
+				
+				// Populate the person objects members with the the users input.
+				person.name = document.getElementById("text_name").value;
+				person.age = document.getElementById("text_age").value;
+				person.occupation = document.getElementById("text_occupation").value;
+								
+				// The person object has been created so disable the create button.
+				var createButton = document.getElementById("button_create_person");
+				createButton.disabled = true;
+				
+				// Enable the update button, so user may modify the person objects data.
+				var updateButton = document.getElementById("button_update_person");
+				updateButton.disabled = false;
+				
+				// Show the user the new person object created.
+				//showPersonObject("Person object created\n");
+				showPersonObject();
+			}
+			
+			// This function will use the users input to update the person objects data.
+			function updatePerson(){
+				// Update the person objects members with the users input.
+				person.name = document.getElementById("text_name").value;
+				person.age = document.getElementById("text_age").value;
+				person.occupation = document.getElementById("text_occupation").value;
+				
+				// Show user the updated person objects data.
+				showPersonObject("Person object updated\n");
+			}
+			
+			// This function will show an alert window with the person objects data.
+			function showPersonObject(messageTitle = ""){
+				var message = messageTitle + 
+								"Name: " + person.name + "\n" + 
+								"Age: " + person.age + "\n" + 
+								"Occupation: " + person.occupation;
+				
+				// Alert window showing the user the person objects values.
+				window.alert(message);
+			}
+		</script>
+	</head>
+
+	<body>		
+		<form>
+			Name: <input type="text" id="text_name"><br>
+			Age: <input type="text" id="text_age"><br>
+			Occupation: <input type="text" id="text_occupation"><br>
+			<input type="button" id="button_create_person" onclick="createPerson()" value="Create"/>
+			<input type="button" id="button_update_person" onclick="updatePerson()" value="Update" disabled="true"/>
+		</form>
+	</body>
+</html>
+
+
