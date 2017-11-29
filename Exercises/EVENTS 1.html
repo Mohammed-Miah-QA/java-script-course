@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			var person = {name: "Mohammed", age: 37, occupation: "Developer"};
+			
+			function incAge(){
+				person.age++;
+				printPerson();
+			}
+			
+			function printPerson(){
+				document.write("Person:<br>");
+				document.write("Name: " + person.name + "<br>");
+				document.write("Age: " + person.age + "<br>");
+				document.write("Occupation: " + person.occupation + "<br><br>");
+			}
+		</script>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			printPerson();
+		</script>
+		
+		<form>
+			<input type="button" onclick="incAge()" value="Increment age"/>
+		</form>
+	</body>
+</html>
