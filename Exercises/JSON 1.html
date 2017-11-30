@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			// Using basic JavaScript, access the JSON file at
+			// https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json
+			function loadJSON(){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){				
+					if (this.readyState == 4 && this.status == 200){
+						var jsonObj = JSON.parse(this.responseText);
+						displayHeroData(jsonObj);
+					}
+				};
+				
+				var url = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/example.json";
+				
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}
+
+			// Once loaded, display the objects retrieved in an organised fashion.
+			function displayHeroData(heroData){
+				var txt = "<h2>" + heroData.squadName + "</h2>";
+				
+				txt += "<b>Home Town:</b> " + heroData.homeTown + "<br>";
+				txt += "<b>Formed:</b> " + heroData.formed + "<br>";
+				txt += "<b>Secret Base:</b> " + heroData.secretBase + "<br>";
+				txt += "<b>Active:</b> " + heroData.active + "<br><br>";
+				
+				txt += "<h3>Members</h3>";
+				
+				var heroMembers = heroData.members;
+				
+				for (hero in heroMembers){
+					txt += "<b>Name:</b> " + heroMembers[hero].name + "<br>";					
+					txt += "<b>Age:</b> " + heroMembers[hero].age + "<br>";					
+					txt += "<b>Secret Identity:</b> " + heroMembers[hero].secretIdentity + "<br>";
+					
+					var heroPowers = heroMembers[hero].powers;
+					
+					txt += "<b>Powers:</b> <i>";
+					
+					for (power in heroPowers){						
+						txt += heroPowers[power];
+						
+						if (power < (heroPowers.length-1)){
+							txt += ", ";
+						}
+					}
+					
+					txt += "</i><br><br>";
+				}
+				
+				document.getElementById("content").innerHTML = txt;
+			}
+			
+			loadJSON();
+		</script>
+	</head>
+
+	<body>
+		<div id="content">
+		</div>
+	</body>
+</html>
