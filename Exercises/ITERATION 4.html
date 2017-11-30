@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			/* Create a method accepts a number then, outputting what it did at each iteration,
+				and how many iterations it took to get to the end.
+					• If the number is divisible by 3, divide it by 3.
+					• If it’s not, either add 1 or subtract 1 (to make it divisible by 3), then divide it by 3.
+					• It stops when the number it reaches is 1*/
+				
+			var machine = {};
+			
+			machine.process = function (val){
+				// "counter" is used to track how many iterations it takes to reach 1
+				var counter = 0;
+				var x = val;
+				
+				document.write("The number "+val+" will be processed:<br><br>");
+				
+				while (x > 1){
+					counter++;
+					document.write("Iteration "+counter+": ");
+					
+					var rem = x % 3;
+					
+					if (rem == 0){
+						document.write(x + " is divisible by 3");
+						x /= 3;
+						document.write(", after dividing by 3 is " + x + "<br>");
+					}
+					else if (rem == 1){
+						document.write(x + " - 1 = " + (--x));
+						x /= 3;
+						document.write(", after dividing by 3 is " + x + "<br>");
+					}
+					else if (rem == 2){
+						document.write(x + " + 1 = " + (++x));
+						x /= 3;
+						document.write(", after dividing by 3 is " + x + "<br>");
+					}
+				}
+				
+				document.write("<br>The number " + val + " took "+counter+" iterations to reach 1");
+			}
+			
+			machine.process(1000);
+		</script>
+	</head>
+
+	<body>
+	</body>
+</html>
