@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			/* We’ll say that a “triple” in a string is a character appearing three times in a row.
+				Create a function that accepts a string and returns the amount of times a triple
+				exists in that string.*/
+				
+			function howManyTriples(str){
+				var counter;	// Keep a count of the number of tripls found.
+				var lastIndex;	// The last index checked should be the third to last character.
+				
+				counter = 0;
+				lastIndex = str.length - 3
+				
+				for (var i = 0; i <= lastIndex; i++){
+					var tempStr = str.charAt(i);
+					tempStr = tempStr.repeat(3);
+					
+					var checkStr = str.substr(i, 3);
+					
+					if (checkStr.includes(tempStr)){
+						counter++;
+					}
+				}
+				
+				document.write(str + " contains " + counter + " triples<br>");
+				
+				return counter;
+			}
+			
+			howManyTriples("abcXXXabc");
+			howManyTriples("xxxabyyyycd");
+		</script>
+	</head>
+
+	<body>
+	</body>
+</html>
