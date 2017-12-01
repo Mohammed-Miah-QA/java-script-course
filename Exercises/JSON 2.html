@@ -1,14 +1,14 @@
 <html>
 	<head>
 		<script type="text/javascript">
+			var kings;
 			// Using basic JavaScript, access the JSON file at
 			// https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json
 			function loadJSON(){
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function(){				
 					if (this.readyState == 4 && this.status == 200){
-						var jsonObj = JSON.parse(this.responseText);
-						displayHeroData(jsonObj);
+						kings = JSON.parse(this.responseText);
 					}
 				};
 				
@@ -20,18 +20,41 @@
 
 			// Once loaded, create a search feature that will search for a 
 			// specific king(s) depending on the input
-			function search(JSONData){
-				var txt = "";
+			function searchKings(){
+				var textSearchTerm = document.getElementById("text_search").value;
 				
-				document.getElementById("content").innerHTML = txt;
+				document.getElementById("content").innerHTML = "";
+				
+				for (king in kings){
+					findKing(kings[king], textSearchTerm);
+				}
+			}
+			
+			function findKing(kingRef, searchTerm){ 
+				if ((kingRef.nm.includes(searchTerm)) || 
+					(kingRef.cty.includes(searchTerm)) || 
+					(kingRef.hse.includes(searchTerm)) || 
+					(kingRef.yrs.includes(searchTerm))){
+					
+					var txt = "";
+					txt += "Name: " + kings[king].nm + "<br>";
+					txt += "City: " + kings[king].cty + "<br>";
+					txt += "House: " + kings[king].hse + "<br>";
+					txt += "Years: " + kings[king].yrs + "<br><br>";
+					document.getElementById("content").innerHTML += txt;
+				}
 			}
 			
 			loadJSON();
-			search("House of Denmark");
 		</script>
 	</head>
 
-	<body>
+	<body>		
+		<form>
+			Kings: <input type="text" id="text_search">
+			<input type="button" id="button_search" onclick="searchKings()" value="Search"/>
+		</form>
+		
 		<div id="content">
 		</div>
 	</body>
