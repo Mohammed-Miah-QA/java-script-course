@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			// Using basic JavaScript, access the JSON file at
+			// https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json
+			function loadJSON(){
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function(){				
+					if (this.readyState == 4 && this.status == 200){
+						var jsonObj = JSON.parse(this.responseText);
+						displayHeroData(jsonObj);
+					}
+				};
+				
+				var url = "https://raw.githubusercontent.com/ewomackQA/JSONDataRepo/master/kings.json";
+				
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}
+
+			// Once loaded, create a search feature that will search for a 
+			// specific king(s) depending on the input
+			function search(JSONData){
+				var txt = "";
+				
+				document.getElementById("content").innerHTML = txt;
+			}
+			
+			loadJSON();
+			search("House of Denmark");
+		</script>
+	</head>
+
+	<body>
+		<div id="content">
+		</div>
+	</body>
+</html>
